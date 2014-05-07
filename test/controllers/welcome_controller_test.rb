@@ -1,9 +1,9 @@
-require "test_helper"
+# require "test_helper"
 
-describe WelcomeController do
-  it "should get index" do
-    get :index
-    assert_response :success
-  end
+# describe WelcomeController do
+#   it "should get index" do
+#     get :index
+#     assert_response :success
+#   end
 
-end
+# end
