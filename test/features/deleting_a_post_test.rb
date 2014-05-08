@@ -2,10 +2,23 @@ require "test_helper"
 
 feature "DeletingAPost" do
   scenario "Druken rant can be expunged" do
-    post = Post.create(title: "this is the title", body: "this is the body")
-    visit posts_path
-    click_on "Destroy"
+    post = posts(:cr).title
 
-    page.wont_have_content "this is the title"
+    visit posts_path
+    page.find("tbody tr:last").click_on "Destroy"
+
+    page.wont_have_content posts(:cr).title
   end
 end
+
+# require "test_helper"
+
+# feature "DeletingAPost" do
+#   scenario "Druken rant can be expunged" do
+#     post = Post.create(title: posts(:cf).title, body: posts(:cf).body)
+#     visit posts_path
+#     page.find("tbody tr:last").click_on "Destroy"
+
+#     page.wont_have_content posts(:cf).title
+# end
+
