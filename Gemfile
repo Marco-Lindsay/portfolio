@@ -15,4 +15,6 @@ gem 'spring',        group: :development
 group :test do
   gem "minitest-rails-capybara"
 end
-
+group :development do
+  gem 'rails_layout'
+end
