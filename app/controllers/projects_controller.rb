@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-before_action :set_project, only: [:show, :edit, :update]
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
     @projects = Project.all
   end
@@ -17,22 +17,30 @@ before_action :set_project, only: [:show, :edit, :update]
       flash.now[:error]= "Project could not be saved"
       render :new
     end
+  end
 
-    def show
-    end
+  def show
+  end
 
-    def edit
-    end
+  def edit
+  end
 
-    def update
-        if @project.update_attributes(project_params)
-        redirect_to @project, notice: 'Project was successfully updated.'
-      else
-        render :edit
-      end
+  def update
+    if @project.update_attributes(project_params)
+      redirect_to @project, notice: 'Project was successfully updated.'
+    else
+      render :edit
     end
   end
 
+  def destroy
+    @project.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_url, notice: 'Project was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+
+  end
 
   private
 
