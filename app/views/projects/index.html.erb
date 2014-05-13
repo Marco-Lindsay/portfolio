@@ -7,10 +7,10 @@
   <div class="nav">
     <%= link_to 'Show', project%>
     <%= link_to 'Edit', edit_project_path(project)%>
-    <%= link_to 'Destroy', project, method::delete, data: {confirm: 'Are you sure?'}%>
+    <%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'}%>
   </div>
 </div>
 <% end %>
 
 <br/>
-<%= linkt_to "New project", new_project_path %>
+<%= link_to "New Project", new_project_path %>

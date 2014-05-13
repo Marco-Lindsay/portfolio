@@ -7,7 +7,7 @@ feature "Projects::CreatingAProject" do
     fill_in 'Name', with: 'New Project'
     fill_in 'Technologies used', with: 'Rails, Ruby'
     click_on "Create Project"
-    page.text_include "Project has been created"
+    page.text.must_include "Project has been created"
     assert page.has_css?("#notice"), "Expected a flash notice on this page, none found."
     page.status_code.must_equal 200
   end

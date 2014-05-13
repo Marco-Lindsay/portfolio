@@ -1,5 +1,26 @@
 class ProjectsController < ApplicationController
   def index
-    @project = Project.all
+    @projects = Project.all
+  end
+  def new
+    @project = Project.new
+  end
+  def create
+    @project = Project.new(project_params)
+    if @project.save
+      flash[:notice]= "Project has been created."
+      redirect_to @project
+    else
+    end
+    def show
+      @project = Project.find(params[:id])
+    end
+  end
+
+
+  private
+
+  def project_params
+    params.require(:project).permit(:name, :technologies_used)
   end
 end
