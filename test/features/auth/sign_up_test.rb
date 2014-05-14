@@ -3,9 +3,9 @@ require "test_helper"
 feature "The ability to sign up for the site on the landing page" do
   scenario "I come to the root of the page and can sign in or sign up" do
   visit "/users/sign_up"
-
   fill_in "Email", with: "m@marco.com"
   fill_in "Password", with: "12345678"
+
   fill_in "Password confirmation", with: "12345678"
   click_button "Sign up"
 
