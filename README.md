@@ -18,11 +18,6 @@ _How do I run the project's automated tests?_
 
 1.`rake spec`
 
-
 ## Contributing changes
 
 Contact me if you are for any reason interested in helping with this project.
-
-
-
-
