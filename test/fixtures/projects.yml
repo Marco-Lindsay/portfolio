@@ -1,0 +1,11 @@
+freelance:
+  name: Barnyard Cereal
+  technologies_used: Ruby, Rails Farmville API, Automilker
+
+portfolio:
+  name: How meta
+  technologies_used: Ruby, Rails, Zurb
+
+short:
+  name: ya
+  technologies_used: Ruby, Rails

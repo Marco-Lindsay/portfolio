@@ -17,6 +17,7 @@ group :development do
 end
 group :test do
   gem "minitest-rails-capybara"
+  gem "launchy"
 end
 group :development do
   gem 'rails_layout'
