@@ -18,32 +18,11 @@ _How do I run the project's automated tests?_
 
 1.`rake spec`
 
-<!--
-### Integration Tests
-
-
-## Deploying
-
-### _How to setup the deployment environment_
- -->
-<!-- ### _How to deploy_ -->
-
-<!-- ## Troubleshooting & Useful Tools -->
-
-<!-- Examples of common tasks_
-
-> e.g.
->
-> - How to make curl requests while authenticated via oauth.
-> - How to monitor background jobs.
-> - How to run the app through a proxy.
- -->
 
 ## Contributing changes
 
 Contact me if you are for any reason interested in helping with this project.
 
-<!-- ## License -->
-<!-- ![Homepage Screenshot](http://imgur.com/6j7G3Xt) -->
+
 
 
