@@ -18,9 +18,9 @@ class ActiveSupport::TestCase
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   fixtures :all
-def sign_in
+def sign_in(role = :editor)
   visit new_user_session_path
-  fill_in "Email", with: users(:marco).email
+  fill_in "Email", with: users(role).email
   fill_in "Password", with: '12345678'
   click_button "Sign in"
 end

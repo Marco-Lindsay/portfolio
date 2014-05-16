@@ -2,13 +2,28 @@ cr:
   title: Code Rails
   body: This is how I learned web development!
   author: marco
+  published: true
 
 http:
   title: Intro to HTTP
   body: It's all about the request-response cycle!
   author: marco
+  published: true
 
 cf:
   title: Becoming a Code Fellow
   body: Means striving for excellence
   author: marco
+  published: true
+
+unpublished:
+  title: Unpublished post
+  body: this is an unpublished post
+  author: marco
+  published: false
+
+published:
+  title: Published post
+  body: this is a published post
+  author: marco
+  published: true
