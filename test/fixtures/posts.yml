@@ -19,7 +19,7 @@ cf:
 unpublished:
   title: Unpublished post
   body: this is an unpublished post
-  author: marco
+  author: author
   published: false
 
 published:

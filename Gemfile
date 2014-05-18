@@ -20,6 +20,7 @@ end
 group :test do
   gem "minitest-rails-capybara"
   gem "launchy"
+  gem 'pry-rails'
 end
 group :development do
   gem 'rails_layout'

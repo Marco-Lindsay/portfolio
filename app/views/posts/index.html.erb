@@ -11,19 +11,22 @@
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-        <% if current_user.present?  && (current_user.editor? || current_user.author?) %>
-        <td><%= link_to 'Edit', edit_post_path(post)%></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
-      </tr>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.body %></td>
+      <td><%= link_to 'Show', post %></td>
+      <% if policy(Post).edit? %>
+      <td><%= link_to 'Edit', edit_post_path(post)%></td>
+       <%end%>
+      <% if policy(Post).destroy? %>
+      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%end%>
+    </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if current_user.present?  && (current_user.editor? || current_user.author?) %>
 <%= link_to 'New Post', new_post_path %>
+<%end%>

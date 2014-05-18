@@ -1,38 +1,45 @@
 require "test_helper"
 
-feature "who can access what content" do
-  scenario "unathenticated site visitors cannot visit new_post_path" do
-    visit new_post_path
-    page.must_have_content "You need to sign in or sign up before continuing"
-    page.wont_have_link "New Post"
-  end
-  scenario "authors can't publish" do
-    #given and authors account
-    sign_in(:author)
+feature "what content an author can access" do
+   scenario "authors can't publish" do
+      sign_in(:author)
+      visit new_post_path
+      page.wont_have_field('Published')
+    end
 
-    #when i visit the new page
-    visit new_post_path
+    scenario "as an author I should not be able to delete posts" do
+      sign_in(:author)
+      visit posts_path
+      page.wont_have_link "Destroy"
+    end
 
-    #there is no checkbox for published
-    page.wont_have_field('Published')
-  end
-  scenario "editors can publish" do
-    # given and editors account
-    sign_in(:editor)
+    scenario "as an author I want to create posts" do
+      sign_in(:author)
+      visit new_post_path
+      page.wont_have_field('Published')
+      fill_in "Title", with: posts(:cr).title
+      fill_in "Body", with: posts(:cr).body
+      click_on "Create Post"
+      page.text.must_include "Post was successfully created"
+    end
 
-    # when i visit a new page
-    visit new_post_path
+    scenario "as an author I want to update posts" do
+      sign_in(:author)
+      title = posts(:unpublished).title
+      visit posts_path
+      page.find('tr', :text => title).click_on "Edit"
+      fill_in "Title", with: posts(:cr).title
+      click_on "Update Post"
+      page.text.must_include posts(:cr).title
+      page.wont_have_content title
+    end
 
-    # there is a checkbox for published
-    page.must_have_field('Published')
-
-    # when i submit the form
-    fill_in "Title", with: posts(:cr).title
-    fill_in "Body", with: posts(:cr).body
-    check "Published"
-    click_on "Create Post"
-
-    # then the published post should be shown
-    page.text.must_include "Status: Published"
-  end
+    scenario "as an author I can only see posts that I am the author of" do
+      sign_in(:author)
+      visit posts_path
+      page.must_have_content posts(:unpublished).title
+      page.must_have_content posts(:unpublished).body
+      page.wont_have_content posts(:cf).title
+      page.wont_have_content posts(:cf).body
+    end
 end
