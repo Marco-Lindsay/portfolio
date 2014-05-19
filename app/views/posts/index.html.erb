@@ -15,7 +15,7 @@
       <td><%= post.title %></td>
       <td><%= post.body %></td>
       <td><%= link_to 'Show', post %></td>
-      <% if policy(Post).edit? %>
+      <% if policy(Post).update? %>
       <td><%= link_to 'Edit', edit_post_path(post)%></td>
        <%end%>
       <% if policy(Post).destroy? %>

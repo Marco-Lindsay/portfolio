@@ -1,6 +1,6 @@
 class PostPolicy < Struct.new(:user, :post)
 
-  def edit?
+  def update?
     user.present? && (user.author? || user.editor?)
   end
 
