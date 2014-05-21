@@ -2,19 +2,20 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :destroy]
   before_action :load_post
   def create
+    @comment = @post.comments.new(comment_params)
+    @comment.save
     redirect_to posts_path
-    @comment = @post.comments.build(comment_params)
+    flash[:notice] = "Your comment has been added!"
 
-    respond_to do |format|
-      if @comment.save
-        current_user.posts << @comment
-        format.html { redirect_to @comment, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @comment.save
+    #     format.html { redirect_to @comment, notice: 'Post was successfully created.' }
+    #     format.json { render :show, status: :created, location: @comment }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @comment.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def edit
@@ -39,6 +40,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:author_url, :author_url, :content)
+    params.require(:comment).permit(:author_url, :author_email, :content)
   end
 end

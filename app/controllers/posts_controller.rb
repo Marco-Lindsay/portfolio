@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_comment
+  before_action :set_comment, only: [:show]
 
   # GET /posts
   # GET /posts.json
@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post_comments = @post.comments.all
   end
 
   # GET /posts/new
