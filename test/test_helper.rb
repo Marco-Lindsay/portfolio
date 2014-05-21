@@ -1,6 +1,6 @@
 require 'simplecov'
 SimpleCov.start 'rails'
-ENV["RAILS_ENV"] = "test"
+Rails.env = "test"
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails"
@@ -11,7 +11,7 @@ require 'pry'
 
 
 # Uncomment for awesome colorful output
-# require "minitest/pride"
+require "minitest/pride"
 
 class ActiveSupport::TestCase
     ActiveRecord::Migration.check_pending!
