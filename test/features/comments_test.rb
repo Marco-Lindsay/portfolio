@@ -5,7 +5,7 @@ feature "Blog has a comments feature" do
     visit posts_path
     title = posts(:cr).title
     page.find('tr', :text => title).click_on "Show"
-    fill_in "Comment", with: comments(:one).content
+    fill_in "Content", with: comments(:one).content
     fill_in "Email", with: comments(:one).author_email
     click_on "Submit Comment"
     page.must_have_content "Comment submited for approval"
