@@ -23,8 +23,15 @@
     <%= f.label :author_url %><br>
     <%= f.text_field :author_url %>
   </div>
+ <% if Post.policy.new(current_user, @post).create %>
+  <div class="small-9 columns">
+    <%= f.label :Approve_comment %><br>
+    <%= f.check_box :approved %>
+  </div>
+<%end%>
   <div class="actions">
     <%= f.submit %>
   </div>
 
 <% end %>
+

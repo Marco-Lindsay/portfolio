@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.save
     redirect_to posts_path
-    flash[:notice] = "Your comment has been added!"
+    flash[:notice] = "Comment submited for approval"
 
     # respond_to do |format|
     #   if @comment.save
