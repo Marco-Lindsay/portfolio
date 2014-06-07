@@ -16,11 +16,16 @@ feature "Blog has a comments feature" do
     visit posts_path
     title = posts(:cr).title
     page.find('tr', :text => title).click_on "Show"
-    # save_and_open_page
+    fill_in "comment_content", with: comments(:one).content
+    fill_in "comment_author_email", with: comments(:one).author_email
     check "comment_approved"
     click_on "Create Comment"
-    save_and_open_page
     page.must_have_content "Comment Published"
+    visit posts_path
+    title = posts(:cr).title
+    page.find('tr', :text => title).click_on "Show"
+    page.must_have_content comments(:one).content
+
   end
 
   scenario "As an author I can approve comments on my posts" do
@@ -28,9 +33,13 @@ feature "Blog has a comments feature" do
     visit posts_path
     title = posts(:unpublished).title
     page.find('tr', :text => title).click_on "Show"
+    fill_in "comment_content", with: comments(:one).content
+    fill_in "comment_author_email", with: comments(:one).author_email
     check "comment_approved"
     click_on "Create Comment"
     page.must_have_content "Comment Published"
   end
+
+
 
 end

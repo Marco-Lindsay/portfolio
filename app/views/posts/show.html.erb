@@ -18,10 +18,11 @@
   <%= @post.published? ? "Published" : "Unpublished"%>
 </p>
 
-<% policy_scope(@post.comments).each do |comment| %>
-  <%= comment.author_email %>
-  <%= comment.content %>
-
+<% @post.comments.each do |comment| %>
+  <% if comment.approved %>
+    <%= comment.author_email %>
+    <%= comment.content %>
+  <%end%>
 <% end %>
 <hr>
 <%= render 'comments/form' %>

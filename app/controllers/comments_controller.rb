@@ -2,20 +2,17 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :destroy]
   before_action :load_post
   def create
-    @comment = @post.comments.new(comment_params)
-    @comment.save
-    redirect_to posts_path
-    flash[:notice] = "Comment submited for approval"
-
-    # respond_to do |format|
-    #   if @comment.save
-    #     format.html { redirect_to @comment, notice: 'Post was successfully created.' }
-    #     format.json { render :show, status: :created, location: @comment }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @comment.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    if current_user && current_user.editor? || current_user && current_user.author?
+      @comment = @post.comments.new(comment_params)
+      @comment.save
+      redirect_to posts_path
+      flash[:notice] = "Comment Published"
+    else
+      @comment = @post.comments.new(comment_params)
+      @comment.save
+      redirect_to posts_path
+      flash[:notice] = "Comment submited for approval"
+    end
   end
 
   def edit
@@ -40,6 +37,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:author_url, :author_email, :content)
+    params.require(:comment).permit(:author_url, :author_email, :content, :approved )
   end
 end

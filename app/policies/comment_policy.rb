@@ -1,19 +1,19 @@
 class CommentPolicy < Struct.new(:user, :comment)
 
   def update?
-    user.present? && (user.author? || user.editor?)
+    user && (user.author? || user.editor?)
   end
 
   def approve?
-    user.present? && user.editor?
+    user && user.editor?
   end
 
   def create?
-    user.present? && user.author? || user.editor?
+    user && user.author? || user && user.editor?
   end
 
   def destroy?
-    user.present? && user.editor?
+    user && user.editor?
   end
 
   class Scope < Struct.new(:user, :scope)
