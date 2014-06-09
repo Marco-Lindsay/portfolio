@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521190455) do
+ActiveRecord::Schema.define(version: 20140609025807) do
 
   create_table "comments", force: true do |t|
     t.string   "author_url"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20140521190455) do
     t.string   "technologies_used"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
+    t.boolean  "image_processed"
   end
 
   create_table "users", force: true do |t|
@@ -60,6 +62,9 @@ ActiveRecord::Schema.define(version: 20140521190455) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
