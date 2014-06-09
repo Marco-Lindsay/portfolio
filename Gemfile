@@ -19,6 +19,7 @@ gem 'better_errors'
 gem 'rmagick' , :require => 'RMagick'
 # gem "fog", "~> 1.20", require: "fog/aws/storage"
 gem 'fog', "~> 1.3.1"
+gem 'figaro'
 # gem 'carrierwave_direct'
 # gem 'sidekiq'
 
