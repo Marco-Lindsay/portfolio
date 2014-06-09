@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
+
 group :test do
   gem 'launchy'
   gem 'minitest-rails-capybara'
@@ -21,6 +22,7 @@ group :test do
 end
 
 group :development do
+  gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rails_layout'
