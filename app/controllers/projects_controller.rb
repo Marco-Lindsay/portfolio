@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
           render :new
         end
       end
-      format.js do |format|
+      format.js do
         @project.save
       end
     end
@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js{}
     end
 
   end
