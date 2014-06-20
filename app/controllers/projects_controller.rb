@@ -10,12 +10,19 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    if @project.save
-      flash[:notice]= "Project has been created."
-      redirect_to @project
-    else
-      flash.now[:error]= "Project could not be saved"
-      render :new
+    respond_to do |format|
+      format.html do
+        if @project.save
+          flash[:notice]= "Project has been created."
+          redirect_to @project
+        else
+          flash.now[:error]= "Project could not be saved"
+          render :new
+        end
+      end
+      format.js do
+        @project.save
+      end
     end
   end
 
@@ -37,7 +44,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js{}
     end
 
   end
