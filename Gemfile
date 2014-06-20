@@ -24,6 +24,7 @@ gem 'figaro'
 # gem 'sidekiq'
 
 group :development do
+  gem 'brakeman', :require => false
   gem 'rails_layout'
   gem 'sqlite3'
 end
