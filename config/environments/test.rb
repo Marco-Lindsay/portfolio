@@ -16,6 +16,13 @@ Rails.application.configure do
   config.serve_static_assets  = true
   config.static_cache_control = 'public, max-age=3600'
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  # Debug mode disables concatenation and preprocessing of assets.
+  # This option may cause significant delays in view rendering with a large
+  # number of complex assets.
+  config.assets.debug = true
+
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -29,7 +36,17 @@ Rails.application.configure do
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
-  config.action_mailer.delivery_method = :test
+  # config.action_mailer.delivery_method = :test
+  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address:              'smtp.gmail.com',
+  #   port:                 587,
+  #   domain:               'marcolindsay.com',
+  #   user_name:             ENV["GMAIL_ACCOUNT"],
+  #   password:              ENV["GMAIL_PASSWORD"],
+  #   authentication:       'plain',
+  #   enable_starttls_auto: true  }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

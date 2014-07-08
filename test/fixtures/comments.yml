@@ -1,0 +1,24 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  author_url: marcolindsay.com
+  author_email: marco@marco.om
+  user_ip: MyString
+  user_agent: MyString
+  referrer: MyString
+  content: this is a comment
+  approved: false
+
+two:
+  author_url: marcolindsay.com
+  author_email: marco@marco.om
+  user_ip: MyString
+  user_agent: MyString
+  referrer: MyString
+  content: this is a comment
+  approved: true
+
+# comment:
+#   body: Nice post!
+#   email: example@example.com
