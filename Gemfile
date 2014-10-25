@@ -10,18 +10,21 @@ gem "minitest-rails"
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'pundit'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
 
-group :development do
-  gem "sqlite3"
-end
+
 group :test do
   gem "minitest-rails-capybara"
   gem "launchy"
+  gem 'pry-rails'
+  gem 'simplecov', '~> 0.7.1', :require => false, :group => :test
 end
 group :development do
   gem 'rails_layout'
+  gem "sqlite3"
+  gem 'spring'
+  # gem 'better_errors'
 end
 
 group :production do
